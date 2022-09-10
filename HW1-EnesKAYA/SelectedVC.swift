@@ -7,8 +7,14 @@
 
 import UIKit
 
-class SelectedVC: UIViewController {
 
+extension NSNotification.Name{
+    static let newPet = Notification.Name.init(rawValue: "newPet")
+}
+
+
+class SelectedVC: UIViewController {
+    
     @IBOutlet weak var subtypeText: UITextField!
     @IBOutlet weak var speciesText: UITextField!
     @IBOutlet weak var ageText: UITextField!
@@ -19,27 +25,30 @@ class SelectedVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        
     }
     
-
+    
     @IBAction func submitButtonClicked(_ sender: Any) {
         
-        let petName = "\(self.petNameText.text ?? "Noname")"
+        let petName     = petNameText.text
+        let petSubtype  = subtypeText.text
+        let petSpecies  = speciesText.text
+        let petAge      = ageText.text
+        let petGender   = genderText.text
+        
+        NotificationCenter.default.post(name: .newPet, object: nil, userInfo: ["petName":petName])
+        NotificationCenter.default.post(name: .newPet, object: nil, userInfo: ["petSubtype":petSubtype])
+        NotificationCenter.default.post(name: .newPet, object: nil, userInfo: ["petSpecies":petSpecies])
+        NotificationCenter.default.post(name: .newPet, object: nil, userInfo: ["petAge":petAge])
+        NotificationCenter.default.post(name: .newPet, object: nil, userInfo: ["petGender":petGender])
         
         
-        NotificationCenter.default.post(name: .nameNotification, object: nil, userInfo: ["name":petName])
+        self.dismiss(animated: true, completion: nil)
         
-        self.dismiss(animated: true, completion: nil)                                                               //for closing second page and go back first
-
-          
         
     }
 }
 
 
-///extension for identifiying the notification center
-extension NSNotification.Name{
-    static let nameNotification = Notification.Name.init(rawValue: "nameNotification")
-}
