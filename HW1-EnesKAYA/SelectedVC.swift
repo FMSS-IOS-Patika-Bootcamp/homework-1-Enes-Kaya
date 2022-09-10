@@ -55,7 +55,7 @@ class SelectedVC: UIViewController {
         NotificationCenter.default.post(name: .newPet, object: nil, userInfo: ["petName":petName])
         NotificationCenter.default.post(name: .newPet, object: nil, userInfo: ["petSubtype":petSubtype])
         NotificationCenter.default.post(name: .newPet, object: nil, userInfo: ["petSpecies":petSpecies])
-        NotificationCenter.default.post(name: .newPet, object: nil, userInfo: ["pe tAge":petAge])
+        NotificationCenter.default.post(name: .newPet, object: nil, userInfo: ["petAge":petAge])
         NotificationCenter.default.post(name: .newPet, object: nil, userInfo: ["petGender":petGender])
         
         // SelectedVC close and move the first vc
