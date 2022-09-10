@@ -19,7 +19,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var petNameTitleLabel: UILabel!
     
     
-   
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,9 +42,12 @@ class ViewController: UIViewController {
     @objc func petNameSubmit(_ notification:Notification){
         
         if let getPetName = notification.userInfo?["petName"] as? String {
-            petNameTitleLabel.text = "\(getPetName)'s Detail"
-            
-           
+            if getPetName.isEmpty == true{
+                petNameTitleLabel.text = "Pet Name"
+            } else {
+                petNameTitleLabel.text = "\(getPetName)'s Detail"
+            }
+  
         } else {
             return
         }
@@ -55,7 +58,7 @@ class ViewController: UIViewController {
     
     @objc func petSubtypeSubmit(_ notification:Notification){
         
-       
+        
         
         if let getPetSubtype = notification.userInfo?["petSubtype"] as? String {
             subtypeLabel.text = "Subtype: \(getPetSubtype)"
@@ -67,7 +70,7 @@ class ViewController: UIViewController {
     }
     @objc func petSpeciesSubmit(_ notification:Notification){
         
-       
+        
         
         if let getPetSpecies = notification.userInfo?["petSpecies"] as? String {
             speciesLabel.text = "Species: \(getPetSpecies)"
@@ -80,7 +83,7 @@ class ViewController: UIViewController {
     
     @objc func petAgeSubmit(_ notification:Notification){
         
-       
+        
         
         if let getPetAge = notification.userInfo?["petAge"] as? String {
             ageLabel.text = "Age: \(getPetAge)"
@@ -93,10 +96,10 @@ class ViewController: UIViewController {
     
     @objc func petGenderSubmit(_ notification:Notification){
         
-       
+        
         
         if let getPetGender = notification.userInfo?["petGender"] as? String {
-            genderLabel.text = "Age: \(getPetGender)"
+            genderLabel.text = "Gender: \(getPetGender)"
         } else {
             return
         }

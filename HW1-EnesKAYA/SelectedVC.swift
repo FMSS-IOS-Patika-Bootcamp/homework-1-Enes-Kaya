@@ -26,19 +26,26 @@ class SelectedVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
+                view.addGestureRecognizer(gestureRecognizer)
         
     }
+    
+    @objc func hideKeyboard(){
+          view.endEditing(true)
+      }
+      
     
     
     @IBAction func submitButtonClicked(_ sender: Any) {
         
-        let petName     = petNameText.text
+        let petName     = petNameText.text ?? "Pet Name"
         let petSubtype  = subtypeText.text
         let petSpecies  = speciesText.text
         let petAge      = ageText.text
         let petGender   = genderText.text
         
-        NotificationCenter.default.post(name: .newPet, object: nil, userInfo: ["petName":petName])
+        NotificationCenter.default.post(name: .newPet, object: nil, userInfo: ["petName":petName as String])
         NotificationCenter.default.post(name: .newPet, object: nil, userInfo: ["petSubtype":petSubtype])
         NotificationCenter.default.post(name: .newPet, object: nil, userInfo: ["petSpecies":petSpecies])
         NotificationCenter.default.post(name: .newPet, object: nil, userInfo: ["petAge":petAge])
