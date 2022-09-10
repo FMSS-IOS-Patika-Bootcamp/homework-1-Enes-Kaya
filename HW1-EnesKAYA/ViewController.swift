@@ -10,7 +10,13 @@ import UIKit
 //This class is about first page when app starts
 
 class ViewController: UIViewController {
-    //TableView
+    
+    @IBOutlet weak var subtypeLabel: UILabel!
+    @IBOutlet weak var speciesLabel: UILabel!
+    @IBOutlet weak var ageLabel: UILabel!
+    @IBOutlet weak var genderLabel: UILabel!
+    
+    
     
     var petArray = [String]()
     var pet = ""
